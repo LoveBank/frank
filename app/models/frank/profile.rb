@@ -13,7 +13,7 @@ module Frank
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
     def partners_entries
-      Entry.where("linked_profile_id =? and received = true and private != true and occurred_on >= ?", id, Time.zone.yesterday.beginning_of_day)
+      Entry.where("linked_profile_id =? and received = true and private != true and created_at >= ?", id, Time.zone.yesterday.beginning_of_day)
     end
 
     ### Encryption
