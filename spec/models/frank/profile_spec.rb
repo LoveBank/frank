@@ -36,6 +36,12 @@ module Frank
         FactoryGirl.create_list(:frank_entry, 2, :linked_profile_id => user.id, :private => true, :received => true)
         expect(user.partners_entries.count).to eql 0
       end
+
+      it 'partner has entries sync last report' do
+        FactoryGirl.create_list(:frank_entry, 2, :linked_profile_id => user.id, :private => false, :received => true)
+        user.last_daily_report_id = Frank::Entry.first.id
+        expect(user.partners_entries.count).to eql 1
+      end
     end
   end
 end

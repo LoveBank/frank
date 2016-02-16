@@ -12,9 +12,13 @@ module Frank
     validates :lastname, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
-    def partners_entries(time)
-      @time = time
-      Entry.where("linked_profile_id =? and received = true and private != true and created_at >= ?", id, @time)
+    # Query for entries that the partner has made
+    # Any entries that have not been included yet in the daily, will be.
+    # otherwise send the entries since the last entry ID
+    def partners_entries
+      last_report_id = 0
+      last_report_id = last_daily_report_id unless last_daily_report_id.nil?
+      Entry.where("linked_profile_id =? and received = true and private != true and id > ?", id, last_report_id)
     end
 
     ### Encryption
