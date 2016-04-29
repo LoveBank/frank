@@ -8,8 +8,8 @@ module Frank
     belongs_to :family
 
     ### Validations
-    validates :firstname, presence: true
-    validates :lastname, presence: true
+    # validates :firstname, presence: true
+    # validates :lastname, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
     # Query for entries that the partner has made
