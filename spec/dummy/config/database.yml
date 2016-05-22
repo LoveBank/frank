@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: frank_development
+  database: frank_engine_development
 
 test:
   <<: *default
-  database: frank_test
+  database:  frank_engine_test
 
 production:
   <<: *default

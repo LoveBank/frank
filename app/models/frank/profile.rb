@@ -7,6 +7,14 @@ module Frank
     has_many :love_banks
     belongs_to :family
 
+    has_many :links, :class_name => 'Frank::Link'
+    has_and_belongs_to_many :profiles, :class_name => 'Frank::Profile', :join_table => 'frank_links', :foreign_key => 'frank_profile_id', :association_foreign_key => 'to_profile_id'
+
+    # has_and_belongs_to_many :source_profiles, :class_name => 'Frank::Profile', :join_table => 'Frank::Links', :foreign_key => 'to_profile_id',
+    #                         :association_foreign_key => 'profile_id'
+    has_many :source_links, :class_name => 'Frank::Link', :foreign_key => 'to_profile_id'
+
+
     ### Validations
     # validates :firstname, presence: true
     # validates :lastname, presence: true
@@ -18,7 +26,7 @@ module Frank
     def partners_entries
       last_report_id = 0
       last_report_id = last_daily_report_id unless last_daily_report_id.nil?
-      Entry.where("linked_profile_id =? and received = true and private != true and id > ?", id, last_report_id)
+      Entry.where('linked_profile_id =? and received = true and private != true and id > ?', id, last_report_id)
     end
 
     ### Encryption

@@ -39,7 +39,7 @@ module Frank
 
       it 'partner has entries sync last report' do
         FactoryGirl.create_list(:frank_entry, 2, :linked_profile_id => user.id, :private => false, :received => true)
-        user.last_daily_report_id = Frank::Entry.first.id
+        user.last_daily_report_id = Entry.first.id
         expect(user.partners_entries.count).to eql 1
       end
     end
