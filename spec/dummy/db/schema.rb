@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530194304) do
+ActiveRecord::Schema.define(version: 20160531213336) do
 
   create_table "frank_comments", force: :cascade do |t|
     t.text     "body"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 20160530194304) do
   end
 
   add_index "frank_families", ["name"], name: "index_frank_families_on_name"
+
+  create_table "frank_insights", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "love_language"
+    t.string   "catagory"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "frank_links", force: :cascade do |t|
     t.datetime "created_at",       null: false

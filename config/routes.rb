@@ -1,4 +1,5 @@
 Frank::Engine.routes.draw do
+  resources :insights
   resources :posts
   resources :actions
   resources :comments
