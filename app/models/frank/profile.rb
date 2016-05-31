@@ -26,7 +26,7 @@ module Frank
     def partners_entries
       last_report_id = 0
       last_report_id = last_daily_report_id unless last_daily_report_id.nil?
-      Entry.where('linked_profile_id =? and received = true and private != true and id > ?', id, last_report_id)
+      Entry.where('linked_profile_id =? and received = ? and private = ? and id > ?', id, 't', 'f', last_report_id)
     end
 
     ### Encryption
