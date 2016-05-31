@@ -6,10 +6,6 @@ module Frank
       expect(FactoryGirl.create(:frank_profile)).to be_valid
     end
 
-    it 'is invalid without a firstname' do
-      expect(FactoryGirl.build(:frank_profile, firstname: nil)).to_not be_valid
-    end
-
     it 'is invalid with duplicate email case insensitive check' do
       FactoryGirl.create(:frank_profile, email: 'jared@jaredjennings.org')
       expect(FactoryGirl.build(:frank_profile, email: 'jared@jaredjennings.org')).to_not be_valid
