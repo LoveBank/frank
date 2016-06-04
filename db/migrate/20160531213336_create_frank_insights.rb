@@ -4,7 +4,7 @@ class CreateFrankInsights < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.string :love_language
-      t.string :catagory
+      t.string :category
 
       t.timestamps null: false
     end

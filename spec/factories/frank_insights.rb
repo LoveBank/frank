@@ -3,7 +3,7 @@ FactoryGirl.define do
     title "MyString"
     body "MyText"
     love_language "MyString"
-    catagory "MyString"
+    category "MyString"
   end
 
 end

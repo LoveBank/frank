@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160531213336) do
     t.string   "title"
     t.text     "body"
     t.string   "love_language"
-    t.string   "catagory"
+    t.string   "category"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
